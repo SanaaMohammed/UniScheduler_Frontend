@@ -1,0 +1,25 @@
+<div class="Form_body" *ngIf="ShowStudentLogin">
+    <div class="registration-container">
+        <div class="registration-form">
+            <h2>Student Registration</h2>
+            <form [formGroup]="studentForm" (ngSubmit)="checkLogin()">
+                <div class="form-group">
+                    <label for="student-id">Student ID</label>
+                    <input type="text" [(ngModel)]="StudentID"  formControlName="StudentID" name="StudentID" id="student-id" placeholder="Academic number" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" [(ngModel)]="password" formControlName="password"  name="password" id="password" placeholder="Password" />
+                </div>
+                <div *ngIf="loginError" class="login-error-box">
+                    Invalid student ID or password
+                </div>
+                <button class="btn" [disabled]="studentForm.invalid">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet *ngIf="!ShowStudentLogin"></router-outlet>
